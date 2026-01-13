@@ -1,6 +1,7 @@
 import Foundation
 import SwiftUI
 import os.log
+import Combine
 
 /// Centralized error handling system for the Dormant Chat application
 @MainActor
