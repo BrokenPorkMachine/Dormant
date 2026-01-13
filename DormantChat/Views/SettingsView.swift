@@ -1,4 +1,5 @@
 import SwiftUI
+internal import UniformTypeIdentifiers
 
 struct SettingsView: View {
     private let keyVault = SecureKeyVault.shared
