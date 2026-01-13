@@ -1,5 +1,6 @@
 import Foundation
 import CryptoKit
+import Combine
 
 /// Local data manager for persisting agents, messages, and rooms using JSON files
 class LocalDataManager: ObservableObject {
