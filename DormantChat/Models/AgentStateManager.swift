@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import Combine
 
 /// Manages the wake/sleep state of LLM agents and coordinates their interactions
 @MainActor
