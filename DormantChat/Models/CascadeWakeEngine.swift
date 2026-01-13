@@ -1,4 +1,5 @@
 import Foundation
+import Combine
 
 /// Handles cascading wake operations when LLM agents mention other agents
 @MainActor
