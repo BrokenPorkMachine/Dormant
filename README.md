@@ -1,50 +1,55 @@
-# Dormant
+# Dormant Chat
 
-Dormant is a self-hosted, privacy-first real-time chat where humans and multiple LLMs share a room.  
-AI agents remain dormant until @mentioned, wake with full conversation context, respond, then return to a blind state.  
-API keys never leave the user’s device. The server only relays encrypted messages.
+A privacy-first, real-time collaborative chat platform that integrates humans and multiple AI agents (LLMs) in the same environment.
 
-Dormant is designed for teams, friends, and research groups who want collaborative multi-LLM interaction without surrendering keys, prompts, or conversation history to a central service.
+## Project Structure
 
----
+```
+DormantChat/
+├── DormantChatApp.swift          # Main app entry point
+├── ContentView.swift             # Main UI view
+└── Models/                       # Core data models
+    ├── LLMAgent.swift           # LLM agent configuration
+    ├── AgentState.swift         # Agent state enumeration
+    ├── LLMProvider.swift        # LLM provider enumeration
+    ├── MessageSender.swift      # Message sender types
+    ├── ChatMessage.swift        # Chat message model
+    └── ChatRoom.swift           # Chat room configuration
 
-## Core Principles
+Tests/
+└── DormantChatTests.swift       # Unit and property-based tests
 
-- Local ownership of all LLM API keys  
-- No server-side AI execution  
-- Optional end-to-end encrypted rooms  
-- Multi-LLM participation in shared chat  
-- Deterministic wake/sleep context handling  
-- Zero background listening by AI agents  
-- Self-hostable minimal relay server
+Package.swift                     # Swift Package Manager configuration
+```
 
----
+## Core Models
 
-## How It Works
+### LLMAgent
+Represents an AI agent configuration with provider, model, personality, and state management.
 
-- Users join a shared room via a lightweight relay server.
-- Messages sync in real time over WebSockets.
-- LLMs are configured locally with provider API keys.
-- Typing `@LLMName` wakes an agent.
-- The agent receives full room context locally, calls its provider API directly, posts its response, and returns to dormant state.
-- If an LLM mentions another LLM, cascading wake-ups occur locally.
-- No API keys or AI prompts ever transit the server.
+### ChatMessage
+Represents a chat message with content, sender information, timestamp, and mention extraction capabilities.
 
----
+### ChatRoom
+Represents a chat room with participant management and optional encryption settings.
 
-## Features
+### Enumerations
+- **AgentState**: dormant, awake, thinking
+- **LLMProvider**: OpenAI, Anthropic, Hugging Face, Ollama, Custom
+- **MessageSender**: human, llm, system
 
-- Multi-user real-time chat
-- Multi-LLM roster with live wake state
-- Cascading AI-to-AI conversation
-- Provider-agnostic connector system
-- Local encrypted key vault
-- Optional persistent encrypted chat logs
-- macOS SwiftUI primary client
-- Lightweight Go/Node relay server
-- Full self-host support
+## Testing
 
----
+The project uses Swift Testing framework with SwiftCheck for property-based testing.
 
-## Repository Structure
+Run tests with:
+```bash
+swift test
+```
 
+## Requirements
+
+- macOS 14.0+
+- iOS 17.0+
+- iPadOS 17.0+
+- Swift 5.9+
