@@ -1,5 +1,6 @@
 import Foundation
 import Network
+import Combine
 
 /// Connection state for WebSocket
 enum ConnectionState: String, CaseIterable {
